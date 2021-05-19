@@ -5,3 +5,9 @@ Java 14.0.2
 
 ## Overview
 An example of parallel running of objects
+
+## Configuration file
+xml format
+* location: start point
+    * x
+    * y
