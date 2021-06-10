@@ -12,9 +12,12 @@ import org.apache.commons.configuration2.tree.ImmutableNode;
 import java.util.List;
 import java.util.ArrayList;
 
+
 public class Input {
 	
 	Input(){
+		
+		list = new ArrayList<Ball>();
 		
 		final Logger logger = LoggerFactory.getLogger(Input.class);
 		
@@ -23,38 +26,39 @@ public class Input {
 			
 		    XMLConfiguration config = configs.xml("config.xml"); 
 		    
-		    List<HierarchicalConfiguration<ImmutableNode>> connection_list = config.configurationsAt("connections");
-		    logger.info("total balls are " + connection_list.size());
+		    List<HierarchicalConfiguration<ImmutableNode>> config_list = config.configurationsAt("location");
+		    logger.info("total balls are " + config_list.size());
 		    
-		    for(HierarchicalConfiguration<ImmutableNode> connection : connection_list) {
+		    double _x;
+		    double _y;
+		    for(HierarchicalConfiguration<ImmutableNode> c : config_list) {
 		    	
-		    	int _start = connection.getInt("start") - 1;
-		    	int _end = connection.getInt("end") - 1;
-		    	double _dis = connection.getDouble("dis");
+		    	_x = c.getDouble("x");
+		    	_y = c.getDouble("y");
 		    	
-		    	if(_start<0 || _all_nodes-1<_start) {
-		    		logger.error("invalid start node");
+		    	if(_x<0 || _x>630.0) {
+		    		logger.error("invalid x");
 		    	}
-		    	if(_end<0 || _all_nodes-1<_end) {
-		    		logger.error("invalid end node");
+		    	if(_y<0 || _y>470.0) {
+		    		logger.error("invalid y");
 		    	}
 		    	
-		    	Branch b = new Branch(_start, _end, _dis);
-		    	_branches.add(b);
+		    	Ball b = new Ball(_x, _y);
+		    	list.add(b);
 		    	
 		    }
 		    
-	    	logger.info("read branch information");
-
-		    
-		}
-		catch (ConfigurationException cex) {
+		} catch (ConfigurationException cex) {
 		
 			logger.error("Fail to read config file");
 	    
 		}
 	}
 	
-	public get_
-
+	public static List<Ball> getConfig() {
+		return list;
+	}
+	
+	private static List<Ball> list;
+	
 }

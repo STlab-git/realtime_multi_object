@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<location>
-	<x>2.0</x>
-	<y>2.0</y>
-</location>
+<config>
+	<location>
+		<x>10</x>
+		<y>10</y>
+	</location>
+</config>
