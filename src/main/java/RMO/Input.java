@@ -26,15 +26,17 @@ public class Input {
 			
 		    XMLConfiguration config = configs.xml("config.xml"); 
 		    
-		    List<HierarchicalConfiguration<ImmutableNode>> config_list = config.configurationsAt("location");
+		    List<HierarchicalConfiguration<ImmutableNode>> config_list = config.configurationsAt("ball");
 		    logger.info("total balls are " + config_list.size());
 		    
 		    double _x;
 		    double _y;
+		    double _spd;
 		    for(HierarchicalConfiguration<ImmutableNode> c : config_list) {
 		    	
 		    	_x = c.getDouble("x");
 		    	_y = c.getDouble("y");
+		    	_spd = c.getDouble("speed");
 		    	
 		    	if(_x<0 || _x>630.0) {
 		    		logger.error("invalid x");
@@ -44,6 +46,7 @@ public class Input {
 		    	}
 		    	
 		    	Ball b = new Ball(_x, _y);
+		    	b.setSpeed(_spd);
 		    	list.add(b);
 		    	
 		    }

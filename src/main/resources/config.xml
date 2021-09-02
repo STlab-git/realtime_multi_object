@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- for debug in eclipse -->
 <config>
-	<location>
-		<x>10</x>
-		<y>10</y>
-	</location>
+	<ball>
+		<x>400</x>
+		<y>50</y>
+		<speed>3</speed>
+	</ball>
+	<ball>
+		<x>50</x>
+		<y>50</y>
+		<speed>3</speed>
+	</ball>
 </config>
